@@ -2,27 +2,38 @@
 
 class Person
 
-    attr_reader :name 
-    attr_accessor :bank_account, :friend, :hygiene, :happiness
+    attr_reader :name, :happiness, :hygiene
+    attr_accessor :bank_account
     
-    def initialize(name, bank_account = 25, happiness = 8, hygiene = 8)
+    def initialize(name)
         @name = name
-        @bank_account = bank_account
-        @happiness = happiness
-        @hygiene = hygiene
+        @bank_account = 25
+        @happiness = 8
+        @hygiene = 8
     end
 
-    # def hygiene=(hygiene)
-    #     @hygiene = hygiene
-        
-    #     if hygiene < 0
-    #         hygiene = 0
-    #     elsif hygiene > 10
-    #         hygiene = 10
-    #     else
-    #         hygiene
-    #     end
-    # end
+    def hygiene=(hygiene)
+        @hygiene = hygiene
+        if @hygiene < 0
+            @hygiene = 0
+        elsif @hygiene > 10
+            @hygiene = 10
+        else
+            @hygiene
+        end
+    end
+
+    def happiness=(happiness)
+        @happiness = happiness
+        if @happiness < 0
+            @happiness = 0
+        elsif @happiness > 10
+            @happiness = 10
+        else
+            @happiness
+        end
+    end
+
 
     def clean?
         
@@ -79,8 +90,8 @@ class Person
             friend.happiness -= 2
             return "blah blah partisan blah lobbyist"
         elsif topic == "weather"
-            self.happiness += 3
-            friend.happiness += 3
+            self.happiness += 1
+            friend.happiness += 1
             return "blah blah sun blah rain"
         else return "blah blah blah blah blah"
         end
